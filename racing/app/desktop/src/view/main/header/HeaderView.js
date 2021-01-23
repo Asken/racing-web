@@ -9,6 +9,12 @@ Ext.define('racing.view.main.header.HeaderView', {
             cls: 'headerviewtext',
             bind: { html: '{heading}' }
         },
+        {
+            xtype: 'button',
+            text: 'Test PG',
+            cls: 'buttontext',
+            handler: 'onTest'
+        },
         '->',
         {
             xtype: 'button',

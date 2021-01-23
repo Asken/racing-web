@@ -1,11 +1,19 @@
+const path = require('path')
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const port = 3000
 
-// app.use(express.static('public'))
+const data = require('./data')
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.use(cors())
+app.use(express.static(path.join(__dirname, 'racing', 'build', 'production', 'racing')))
+
+app.get('/servers', async (req, res) => {
+  await data.servers()
+  res.send({
+      success: true
+  })
 })
 
 app.listen(port, () => {

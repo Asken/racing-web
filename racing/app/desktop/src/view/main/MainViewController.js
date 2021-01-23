@@ -63,6 +63,9 @@ Ext.define('racing.view.main.MainViewController', {
 		Ext.Viewport.add([{ xtype: 'loginview'}]);
 	},
 
+	onTest: function () {
+		fetch('http://localhost:3000/servers')
+	}
 
 //	onActionsViewLogoutTap: function( ) {
 //		var vm = this.getViewModel();

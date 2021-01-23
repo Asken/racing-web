@@ -11,6 +11,10 @@
 	line-height: 50px;
 }
 
+.buttontext {
+	color: $base-foreground-color;
+}
+
 @include button-ui(
 	$ui: 'headerbutton',
 	$background-color: transparent,
