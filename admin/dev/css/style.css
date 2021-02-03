@@ -236,3 +236,10 @@ a.article, a.article:hover {
 #login .form-title {
     margin: -1.5rem 0rem 1.5rem;
 }
+
+/* ---------------------------------------------------
+    HELPERS
+----------------------------------------------------- */
+.hidden {
+    display: none;
+}
