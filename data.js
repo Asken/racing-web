@@ -15,5 +15,6 @@ const getIdentity = async (username) => {
 }
 
 module.exports = {
-    listSettings
+    listSettings,
+    pool
 }

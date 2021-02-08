@@ -4,7 +4,7 @@ var router = express.Router()
 const Setting = require('../models/settings')
 
 // Settings
-router.get('/:serverName', async (req, res) => {
+router.get('/:server_name', async (req, res) => {
     const data = await listSettings()
     res.send({
         success:true,

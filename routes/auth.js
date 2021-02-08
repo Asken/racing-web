@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router()
-const Auth = require('../models/auth')
+const Identity = require('../models/identity')
 
 // Auth
 router.get('/login', async (req, res) => {
@@ -8,10 +8,10 @@ router.get('/login', async (req, res) => {
     const password = req.query.password
 
     // TODO: Test user and password
-    // ...
+    const ok = await Identity.checkLogin(username, password)
 
     res.send({
-        success:true
+        success: ok
     })
 })
 

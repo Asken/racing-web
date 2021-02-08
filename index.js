@@ -6,6 +6,7 @@ const port = 3000
 
 // Routers
 const settings = require('./routes/settings')
+const auth = require('./routes/auth')
 
 const data = require('./data')
 
@@ -18,6 +19,7 @@ app.use('/admin', express.static(path.join(__dirname, 'admin', 'dev')))
 app.use('/admin-test', express.static(path.join(__dirname, 'admin', 'ace-v3.1.1')))
 app.use(express.static('public'))
 app.use('/settings', settings)
+app.use('/auth', auth)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

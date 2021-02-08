@@ -4,9 +4,7 @@ const isLoggedIn = () => {
 }
 
 const loginClick = () => {
-    $('#login').modal('hide')
-    $('#login').remove()
-    location.href = '#/server/view/default'
+    pubsub.publish('login')
 }
 
 const showLogin = () => {

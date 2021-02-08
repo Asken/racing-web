@@ -7,7 +7,7 @@ const formationLapTypes = [0, 1, 3, 4, 5]
 
 class Setting {
     constructor({
-        serverName = '',
+        server_name = '',
         adminPassword = '',
         carGroup = 'FreeForAll',
         trackMedalsRequirement = 0,
@@ -27,7 +27,7 @@ class Setting {
         allowAutoDQ = 0,
         configVersion = 1
     } = {
-        // serverName: '',
+        // server_name: '',
         // adminPassword: '',
         // carGroup: '',
         // trackMedalsRequirement: 0,
@@ -47,7 +47,7 @@ class Setting {
         // allowAutoDQ: 0,
         // configVersion: 1,
     }) {
-        this.serverName = serverName
+        this.server_name = server_name
         this.adminPassword = adminPassword
         this.carGroup = carGroup
         this.trackMedalsRequirement = trackMedalsRequirement
@@ -69,7 +69,7 @@ class Setting {
     }
 
     isValid() {
-        return this.serverName !== ''
+        return this.server_name !== ''
             && carGroups.includes(this.carGroup)
             && trackMedalsRequirements.includes(this.trackMedalsRequirement)
             && safetyRatingRequirements.includes(this.safetyRatingRequirement)
