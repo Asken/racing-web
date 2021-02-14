@@ -26,7 +26,20 @@ const fetchGet = async (url, config) => {
 const fetchAutGet = async (url, config) => {
     return await fetchGet(url, {
         headers: {
-            'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImtyaXN0aWFuLmFza0BnbWFpbC5jb20iLCJpYXQiOjE2MTI3OTcxMzQsImV4cCI6MTYxMjg4MzUzNH0.iiNVGiBaUEUpu6hqdwdhIbc3P0nurnbLRJr5miRPb-E'
+            ...{},
+            ...getAuthHeaders()
+        }
+    }, config)
+}
+
+const getAuthHeaders = async () => {
+    return new Promise(async (res, rej) => {
+        const hasHandler = await pubsub.publish('needAuthHeaders', (headers) => {
+            res(headers)
+        })
+        if (!hasHandler) {
+            console.error('getAuthHeaders require a pubsub.subscribe(\'needAuthHeaders\'')
+            rej(null)
         }
     })
 }

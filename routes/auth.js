@@ -21,9 +21,11 @@ router.get('/login', async (req, res) => {
         })
     }
     else {
-        res.send({
-            success: false
-        })
+        res
+            .status(403)
+            .send({
+                success: false
+            })
     }
 })
 

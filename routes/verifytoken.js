@@ -4,7 +4,7 @@ function verifyToken(req, res, next) {
 
     // check header or url parameters or post parameters for token
     var token = req.headers['authorization']
-    if (!token && !token.startsWith('Bearer ')) {
+    if (!token || !token.startsWith('Bearer ')) {
         return res.status(403).send({ auth: false, message: 'No token provided.' });
     }
     token = token.split(' ')[1]

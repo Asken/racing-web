@@ -31,11 +31,15 @@ class Identity {
     }
 
     static async checkLogin(username, password) {
+        const id = await Identity.load(username)
+        if (!id) {
+            return false
+        }
         const hash = require("crypto")
             .createHash("sha256")
             .update(password)
             .digest("hex");
-        const id = await Identity.load(username)
+        
         return id.password_key === hash
     }
 }
