@@ -1,6 +1,8 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const jwt = require('jsonwebtoken')
+const router = express.Router()
 const Identity = require('../models/identity')
+const verifyToken = require('./verifytoken')
 
 // Auth
 router.get('/login', async (req, res) => {
@@ -9,9 +11,27 @@ router.get('/login', async (req, res) => {
 
     // TODO: Test user and password
     const ok = await Identity.checkLogin(username, password)
+    if (ok) {
+        const token = jwt.sign({ id: username }, process.env.site_secret, {
+            expiresIn: 86400
+        })
+        res.send({
+            success: ok,
+            token
+        })
+    }
+    else {
+        res.send({
+            success: false
+        })
+    }
+})
 
+router.get('/me', verifyToken, async (req, res) => {
+    const user = await Identity.load(req.userId)
     res.send({
-        success: ok
+        success: true,
+        user
     })
 })
 
