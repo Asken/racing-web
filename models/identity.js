@@ -1,4 +1,5 @@
 const { pool } = require('../data')
+const crypto = require("crypto")
 
 class Identity {
     constructor({
@@ -35,7 +36,7 @@ class Identity {
         if (!id) {
             return false
         }
-        const hash = require("crypto")
+        const hash = crypto
             .createHash("sha256")
             .update(password)
             .digest("hex");
