@@ -1,7 +1,3 @@
-const server = function (server_name) {
-    console.log(`server: server_name is populated: ${server_name}`)
-}
-
 const books = function () { console.log('books') }
 
 const routes = {
